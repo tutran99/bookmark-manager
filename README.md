@@ -9,16 +9,17 @@ https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&titl
 
 ## Setting up Database
 
-Connect to 'psql' and create 'bookmark_manager' database:
+Connect to 'psql' and create 'bookmark_manager' and 'bookmark_manager_test' databases:
 
 ```
 CREATE DATABASE bookmark_manager;
+CREATE DATABASe bookmark_manager_test;
 ```
 
-Connect to database using the pqsl command:
+To set up the necessary tables, connect to each database using the pqsl command '\c bookmark_manager' and '\c bookmark_manager_test'
 
 ```
-\c bookmark_manager;
+Run SQL scripts found in 'db/migrations'
 ```
 
 Run the query saved in the file '01_create_bookmarks_table.sql'
