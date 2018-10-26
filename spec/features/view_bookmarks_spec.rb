@@ -8,11 +8,9 @@ feature 'View bookmarks' do
     end
     scenario 'user can see list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
-
-      # Adding the test data
-      connection.exec("INSERT INTO bookmarks VALUES(1, 'https://www.google.com');")
-      connection.exec("INSERT INTO bookmarks VALUES(2, 'https://github.com');")
-      connection.exec("INSERT INTO bookmarks VALUES(3, 'https://www.youtube.com');")
+      Bookmark.create(url: "https://wwww.google.com")
+      Bookmark.create(url: "https://github.com")
+      Bookmark.create(url: "https://wwww.youtube.com")
 
       visit ('/bookmarks')
 
