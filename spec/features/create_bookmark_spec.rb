@@ -7,7 +7,8 @@ feature 'submit and add a new bookmark' do
   scenario 'user adds a bookmark to bookmark manager' do
     visit('/bookmarks/new')
     fill_in('url', with: 'https://www.facebook.com')
+    fill_in('title', with: 'Facebook')
     click_button('Submit')
-    expect(page).to have_content 'https://www.facebook.com'
+    expect(page).to have_link('Facebook', href: 'https://www.facebook.com')
   end
 end
