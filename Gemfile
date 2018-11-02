@@ -6,5 +6,6 @@ gem 'sinatra'
 gem 'rspec'
 gem 'capybara'
 gem 'pg'
+gem 'sinatra-flash'
 
 # gem "rails"

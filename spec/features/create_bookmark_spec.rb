@@ -9,6 +9,16 @@ feature 'submit and add a new bookmark' do
     fill_in('url', with: 'https://www.facebook.com')
     fill_in('title', with: 'Facebook')
     click_button('Submit')
+
     expect(page).to have_link('Facebook', href: 'https://www.facebook.com')
+  end
+
+  scenario 'bookmark is a valid URL' do
+    visit('bookmarks/new')
+    fill_in('url', with: 'invalid URL')
+    click_button('Submit')
+
+    expect(page).not_to have_content 'invalid URL'
+    expect(page).to have_content 'Please submit a valid URL'
   end
 end
