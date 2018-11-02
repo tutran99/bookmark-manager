@@ -33,11 +33,37 @@ describe Bookmark do
 
   describe '#delete' do
     it 'removes a bookmark' do
-      bookmark = Bookmark.create(title: 'Google', url: 'https:google.com')
+      bookmark = Bookmark.create(title: 'Google', url: 'https://www.google.com')
 
       Bookmark.delete(id: bookmark.id)
       
       expect(Bookmark.all.length).to eq 0
+    end
+  end
+
+  describe '#update' do
+    it 'updates bookmark details' do
+    bookmark = Bookmark.create(title: 'Google', url: 'https://www.google.com')
+
+    changed_bookmark = Bookmark.update(id: bookmark.id, url: 'https://www.fakegoogle.com', title: 'FakeGoogle')
+
+    expect(changed_bookmark).to be_a Bookmark
+    expect(changed_bookmark.id).to eq bookmark.id
+    expect(changed_bookmark.title).to eq 'FakeGoogle'
+    expect(changed_bookmark.url).to eq 'https://www.fakegoogle.com'
+    end
+  end
+
+  describe '#find' do
+    it 'finds and returns the selected bookmark object' do
+      bookmark = Bookmark.create(title: 'Google', url: 'https://www.google.com')
+
+      selected_bookmark= Bookmark.find(id: bookmark.id)
+
+      expect(selected_bookmark).to be_a Bookmark
+      expect(selected_bookmark.id).to eq "#{bookmark.id}"
+      expect(selected_bookmark.title).to eq 'Google'
+      expect(selected_bookmark.url).to eq 'https://www.google.com'
     end
   end
 end
